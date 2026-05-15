@@ -40,6 +40,17 @@ void sau(Node* p) {
     }
 }
     // Tạo các cây
+    // Cay đầy đủ
+    Node* TaoCayDayDu() {
+    Node* goc = new Node("1");
+    goc->left = new Node("2");
+    goc->right = new Node("3");
+    goc->left->left = new Node("4");
+    goc->left->right = new Node("5");
+    goc->right->left = new Node("6");
+    goc->right->right = new Node("7");
+    return goc;
+}
     // Cây lệch trái
     Node* CayLechTrai() {
     Node* root = new Node("1");
