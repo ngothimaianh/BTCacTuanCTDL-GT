@@ -2,14 +2,13 @@
 #include <string>
 using namespace std;
 
-// Cấu trúc Node cô dạy
 struct Node {
-    string data; // Để dùng cho cả số và toán tử (+, -, *, /)
+    string DuLieu; 
     Node* left;
     Node* right;
 
-    Node(string val) {
-        data = val;
+    Node(string gt) {
+        DuLieu = gt;
         left = NULL;
         right = NULL;
     }
