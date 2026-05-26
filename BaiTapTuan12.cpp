@@ -12,7 +12,6 @@ void VunDong(int a[], int i, int n)
 {
     int x = a[i];
     int j = i*2;
-
     while(j<=n)
     {
         if(j<n && a[j]<a[j+1])
@@ -30,7 +29,6 @@ void VunDong(int a[], int i, int n)
     }
     a[j/2]=x;
 }
-
 void SapXepVunDong(int a[], int n)
 {
     cout<<"Mang ban dau:"<<endl;
@@ -78,6 +76,9 @@ int main()
     int a2[13]={0,11,54,32,106,38,78,203,16,84,17,39,15};
     int n2=12;
     SapXepVunDong(a2,n2);
+    int a3[9]={96, 83, 45, 75, 51, 11, 27, 32, 66};
+    int n3=8;
+    SapXepVunDong(a3,n3);
 
     return 0;
 }
