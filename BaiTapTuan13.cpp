@@ -58,3 +58,14 @@ Node *TimKiem(Node *T, int x)
         }
     }
 }
+void DuyetLNR(Node *T)
+{
+    if (T != NULL)
+    {
+        DuyetLNR(T->left);
+        cout << T->dl << " ";
+        DuyetLNR(T->right);
+        }
+    }
+    
+}
