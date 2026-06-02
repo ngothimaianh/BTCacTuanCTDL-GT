@@ -33,3 +33,28 @@ void ThemNode(Node *&T, int x)
         }
     }
 }
+Node *TimKiem(Node *T, int x)
+{
+    if (T == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        if (T->dl == x)
+        {
+            return T;
+        }
+        else
+        {
+            if (x < T->dl)
+            {
+                return TimKiem(T->left, x);
+            }
+            else
+            {
+                return TimKiem(T->right, x);
+            }
+        }
+    }
+}
