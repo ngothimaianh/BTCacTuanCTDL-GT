@@ -68,9 +68,8 @@ void DuyetLNR(Node *T)
         }
     }
 
-}
-int main()
-int a[]={2001, 2002, 2006, 2007, 2008, 2004, 2005, 2001, 1999, 2004}
+int main(){
+int a[]={2001, 2002, 2006, 2007, 2008, 2004, 2005, 2001, 1999, 2004};
 int n = 10;
 {
     Node* T= NULL;
@@ -91,4 +90,5 @@ int n = 10;
         cout<<"\nKhong tim thay "<<x<<" trong cay nhi phan tim kiem."<<endl;
     }
      return 0;
+}
 }
