@@ -67,5 +67,28 @@ void DuyetLNR(Node *T)
         DuyetLNR(T->right);
         }
     }
-    
+
+}
+int main()
+int a[]={2001, 2002, 2006, 2007, 2008, 2004, 2005, 2001, 1999, 2004}
+int n = 10;
+{
+    Node* T= NULL;
+    for(int i=0; i<n; i++)
+    {
+        ThemNode(T, a[i]);
+    }
+    cout<<"Cay nhi phan tim kiem sau khi duyet LNR: "<<endl;
+    DuyetLNR(T);
+    int x = 2004;
+    Node* p = TimKiem(T, x);
+    if(p != NULL)
+    {
+        cout<<"\nTim thay "<<x<<" trong cay nhi phan tim kiem."<<endl;
+    }
+    else
+    {
+        cout<<"\nKhong tim thay "<<x<<" trong cay nhi phan tim kiem."<<endl;
+    }
+     return 0;
 }
