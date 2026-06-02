@@ -23,14 +23,10 @@ void ThemNode(Node *&T, int x)
     }
     else
     {
-        if (x < T->dl)
-        {
-            ThemNode(T->left, x);
-        }
-        else
-        {
-            ThemNode(T->right, x);
-        }
+        if (x < T->dl){
+            ThemNode(T->left, x); }
+        else{
+            ThemNode(T->right, x); }
     }
 }
 Node *TimKiem(Node *T, int x)
@@ -73,11 +69,11 @@ int a[]={2001, 2002, 2006, 2007, 2008, 2004, 2005, 2001, 1999, 2004};
 int n = 10;
 {
     Node* T= NULL;
-    for(int i=0; i<n; i++)
+    for(int i=1; i<=n; i++)
     {
         ThemNode(T, a[i]);
     }
-    cout<<"Cay nhi phan tim kiem sau khi duyet LNR: "<<endl;
+    cout<<"Cay nhi phan tim kiem sau khi duyet LNR la: "<<endl;
     DuyetLNR(T);
     int x = 2004;
     Node* p = TimKiem(T, x);
