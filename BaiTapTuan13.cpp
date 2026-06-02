@@ -69,7 +69,7 @@ int a[]={2001, 2002, 2006, 2007, 2008, 2004, 2005, 2001, 1999, 2004};
 int n = 10;
 {
     Node* T= NULL;
-    for(int i=1; i<=n; i++)
+    for(int i=0; i<n; i++)
     {
         ThemNode(T, a[i]);
     }
