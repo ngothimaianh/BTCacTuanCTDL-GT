@@ -40,4 +40,28 @@ voide XoayKepPhaiTrai(Node* k1){
     XoayDonPhai(k1->right);
     XoayDonTrai(k1);
 }
+void Chen(int x, Node* t){
+    if (t == NULL)
+        t = TaoNut(x);
+    else if (x < t->data) {
+        Chen(x, t->left);
+        if (ChieuCao(t->left) - ChieuCao(t->right) == 2) {
+            if (x < t->left->data)
+                XoayDonTrai(t);
+            else
+                XoayKepTraiPhai(t);
+        }
+    }
+    else if (x > t->data) {
+        Chen(x, t->right);
+        if (ChieuCao(t->right) - ChieuCao(t->left) = 2) {
+            if (x > t->right->data)
+                XoayDonPhai(t);
+            else
+                XoayKepPhaiTrai(t);
+        }
+    }
+    t->height = max(ChieuCao(t->left), ChieuCao(t->right)) + 1;
+    
+}
 ]
