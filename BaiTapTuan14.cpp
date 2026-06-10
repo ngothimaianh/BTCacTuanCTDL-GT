@@ -62,6 +62,42 @@ void Chen(int x, Node* t){
         }
     }
     t->height = max(ChieuCao(t->left), ChieuCao(t->right)) + 1;
-    
+
+}
+void DuyetLNR(Node* T) {
+    if (T != NULL) {
+        DuyetLNR(T->left);
+        cout << T->data << " ";
+        DuyetLNR(T->right);
+    }
+}
+void DuyetNLR(Node* T) {
+    if (T != NULL) {
+        cout << T->data << " ";
+        DuyetNLR(T->left);
+        DuyetNLR(T->right);
+    }
+}
+void DuyetLRN(Node* T) {
+    if (T != NULL) {
+        DuyetLRN(T->left);
+        DuyetLRN(T->right);
+        cout << T->data << " ";
+    }
+}
+int main (){
+    Node*T =NULL;
+    int a[]= {32, 51, 27, 83, 96, 11, 45, 75, 66}
+}int n = 9;
+    for (int i = 0; i < n; i++) {
+        Chen(a[i], T);
+    }
+    cout << "Duyet LNR: ";
+    DuyetLNR(T);
+    cout << "\nDuyet NLR: ";
+    DuyetNLR(T);
+    cout << "\nDuyet LRN: ";
+    DuyetLRN(T);
+    return 0;
 }
 ]
