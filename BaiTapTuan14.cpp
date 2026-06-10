@@ -106,7 +106,6 @@ void DuyetLRN(Node* &T) {
     }
 }
 
-}
 int main (){
     Node*T =NULL;
     int a[]= {32, 51, 27, 83, 96, 11, 45, 75, 66};
