@@ -7,3 +7,8 @@ struct Node {
     Node* right;
     int height;
 }
+int ChieuCao(Node* p) {
+    if (p == NULL)
+        return -1;
+    return p->height;
+}
