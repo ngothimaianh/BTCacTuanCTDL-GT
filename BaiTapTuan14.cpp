@@ -105,19 +105,7 @@ void DuyetLRN(Node* &T) {
         cout << T->data << " ";
     }
 }
-void InCay(Node* T, int level = 0)
-{
-    if (T != NULL)
-    {
-        InCay(T->right, level + 1);
 
-        for(int i = 0; i < level; i++)
-            cout << "    ";
-
-        cout << T->data << endl;
-
-        InCay(T->left, level + 1);
-    }
 }
 int main (){
     Node*T =NULL;
@@ -132,7 +120,6 @@ int main (){
     DuyetNLR(T);
     cout << "\nDuyet LRN: ";
     DuyetLRN(T);
-    cout << "\n\nCay AVL:\n";
-InCay(T);
+
     return 0;
 }
