@@ -6,7 +6,7 @@ struct Node {
     Node* left;
     Node* right;
     int height;
-}
+};
 int ChieuCao(Node* p) {
     if (p == NULL)
         return -1;
@@ -19,28 +19,48 @@ int max(int a, int b) {
 Node* TaoNut(int x) {
     Node* p = new Node;
     p->data = x;
-    p->left = NULL
+    p->left = NULL;
     p->right = NULL;
     p->height = 0;
     return p;
 }
-void XoayDonTrai(Node* k2){
-    Node* k1 = k2 -> left;
-    k2 -> left = k1->right
-    k1 -> right = k2;
-    k2 -> height = max(ChieuCao(k2->left), ChieuCao(k2->right)) + 1;
-    k1 -> height = max(ChieuCao(k1->left), ChieuCao(k1->right)) + 1;
+void XoayDonTrai(Node* &k2){
+       Node* k1 = k2->left;
+
+    k2->left = k1->right;
+    k1->right = k2;
+
+    k2->height = max(ChieuCao(k2->left),
+                     ChieuCao(k2->right)) + 1;
+
+    k1->height = max(ChieuCao(k1->left),
+                     k2->height) + 1;
+
     k2 = k1;
 }
-void XoayKepTraiPhai(Node* k3){
-    XoayDonTrai(k3->left);
-    XoayDonPhai(k3);
+void XoayDonPhai(Node* &k1){
+    Node* k2 = k1->right;
+
+    k1->right = k2->left;
+    k2->left = k1;
+
+    k1->height = max(ChieuCao(k1->left),
+                     ChieuCao(k1->right)) + 1;
+
+    k2->height = max(ChieuCao(k2->right),
+                     k1->height) + 1;
+
+    k1 = k2;
 }
-voide XoayKepPhaiTrai(Node* k1){
-    XoayDonPhai(k1->right);
-    XoayDonTrai(k1);
+void XoayKepTraiPhai(Node* &k3){
+    XoayDonPhai(k3->left);
+    XoayDonTrai(k3);
 }
-void Chen(int x, Node* t){
+void XoayKepPhaiTrai(Node* &k1){
+    XoayDonTrai(k1->right);
+    XoayDonPhai(k1);
+}
+void Chen(int x, Node* &t){
     if (t == NULL)
         t = TaoNut(x);
     else if (x < t->data) {
@@ -54,7 +74,7 @@ void Chen(int x, Node* t){
     }
     else if (x > t->data) {
         Chen(x, t->right);
-        if (ChieuCao(t->right) - ChieuCao(t->left) = 2) {
+        if (ChieuCao(t->right) - ChieuCao(t->left) == 2) {
             if (x > t->right->data)
                 XoayDonPhai(t);
             else
@@ -64,31 +84,45 @@ void Chen(int x, Node* t){
     t->height = max(ChieuCao(t->left), ChieuCao(t->right)) + 1;
 
 }
-void DuyetLNR(Node* T) {
+void DuyetLNR(Node* &T) {
     if (T != NULL) {
         DuyetLNR(T->left);
         cout << T->data << " ";
         DuyetLNR(T->right);
     }
 }
-void DuyetNLR(Node* T) {
+void DuyetNLR(Node* &T) {
     if (T != NULL) {
         cout << T->data << " ";
         DuyetNLR(T->left);
         DuyetNLR(T->right);
     }
 }
-void DuyetLRN(Node* T) {
+void DuyetLRN(Node* &T) {
     if (T != NULL) {
         DuyetLRN(T->left);
         DuyetLRN(T->right);
         cout << T->data << " ";
     }
 }
+void InCay(Node* T, int level = 0)
+{
+    if (T != NULL)
+    {
+        InCay(T->right, level + 1);
+
+        for(int i = 0; i < level; i++)
+            cout << "    ";
+
+        cout << T->data << endl;
+
+        InCay(T->left, level + 1);
+    }
+}
 int main (){
     Node*T =NULL;
-    int a[]= {32, 51, 27, 83, 96, 11, 45, 75, 66}
-}int n = 9;
+    int a[]= {32, 51, 27, 83, 96, 11, 45, 75, 66};
+    int n = sizeof(a) / sizeof(a[0]);
     for (int i = 0; i < n; i++) {
         Chen(a[i], T);
     }
@@ -98,6 +132,7 @@ int main (){
     DuyetNLR(T);
     cout << "\nDuyet LRN: ";
     DuyetLRN(T);
+    cout << "\n\nCay AVL:\n";
+InCay(T);
     return 0;
 }
-]
