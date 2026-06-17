@@ -17,3 +17,8 @@ string TenTinh[MAX] =
     "Hai Phong"
 };
 int n = 11;
+struct Node
+{
+    int info;
+    Node* next;
+};
