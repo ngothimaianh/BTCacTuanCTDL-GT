@@ -53,3 +53,66 @@ void ThemCanh(int u,int v)
     ThemDau(adj[u],v);
     ThemDau(adj[v],u);
 }
+struct Queue
+{
+    int data[MAX];
+    int dau;
+    int cuoi;
+};
+
+void KhoiTaoQueue(Queue &q)
+{
+    q.dau = 0;
+    q.cuoi = -1;
+}
+
+bool Rong(Queue q)
+{
+    return q.dau > q.cuoi;
+}
+void Enqueue(Queue &q,int x)
+{
+    q.cuoi++;
+    q.data[q.cuoi] = x;
+}
+
+int Dequeue(Queue &q)
+{
+    int x = q.data[q.dau];
+    q.dau++;
+
+    return x;
+}
+void BFS(int start)
+{
+    bool visited[MAX];
+
+    for(int i=0;i<n;i++)
+        visited[i] = false;
+
+    Queue q;
+    KhoiTaoQueue(q);
+    visited[start] = true;
+
+    Enqueue(q,start);
+    while(!Rong(q))
+    {
+        int u = Dequeue(q)
+
+        cout << TenTinh[u] << endl;
+        Node* p = adj[u];
+        while(p != NULL)
+        {int v = p->info;
+
+            if(visited[v] == false)
+            {
+                visited[v] = true;
+
+                Enqueue(q,v);
+            }
+
+            p = p->next;
+        }
+    }
+}
+
