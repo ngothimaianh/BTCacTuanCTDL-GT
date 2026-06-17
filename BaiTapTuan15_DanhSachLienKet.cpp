@@ -40,18 +40,28 @@ Node* TaoNode(int x)
     return p;
     }
 
-void ThemDau(Node* &head,int x)
+void ThemCuoi(Node* &head, int x)
 {
-    Node* p = TaoNode(x)
+    Node* p = TaoNode(x);
+    if(head == NULL)
+    {
+        head = p;
+        return;
+    }
+    Node* q = head;
 
-    p->next = head;
-    head = p;
+    while(q->next != NULL)
+    {
+        q = q->next;
+    }
+
+    q->next = p;
 }
 
 void ThemCanh(int u,int v)
 {
-    ThemDau(adj[u],v);
-    ThemDau(adj[v],u);
+    ThemCuoi(adj[u],v);
+    ThemCuoi(adj[v],u);
 }
 struct Queue
 {
@@ -97,7 +107,7 @@ void BFS(int start)
     Enqueue(q,start);
     while(!Rong(q))
     {
-        int u = Dequeue(q)
+        int u = Dequeue(q);
 
         cout << TenTinh[u] << endl;
         Node* p = adj[u];
@@ -131,7 +141,7 @@ int main()
     ThemCanh(7,9);
     ThemCanh(9,10);
     ThemCanh(1,10);
-    cout << "BFS tu Ha Noi:\n\n";
+    cout << "BFS tu Ha Noi:\n";
     BFS(0);
     return 0;
 }

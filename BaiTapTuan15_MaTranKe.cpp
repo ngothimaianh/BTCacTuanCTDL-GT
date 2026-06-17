@@ -18,6 +18,7 @@ string TenTinh[MAX] =
     "Hai Phong"
 };
 int a[MAX][MAX];
+
 int n = 11;
 struct Queue
 {
@@ -25,6 +26,7 @@ struct Queue
     int dau;
     int cuoi;
 };
+
 void KhoiTaoQueue(Queue &q)
 {
     q.dau = 0;
@@ -95,9 +97,10 @@ int main()
     ThemCanh(7,9);
     ThemCanh(9,10);
     ThemCanh(1,10);
-    cout << "BFS bat dau tu Ha Noi:\n";
+
+    cout << "BFS bat dau tu Ha Noi:\n\n";
+
     BFS(0);
 
     return 0;
 }
-
