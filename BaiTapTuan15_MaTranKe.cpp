@@ -56,7 +56,7 @@ void BFS(int start)
 {
     bool visited[MAX];
 
-    for(int i=0;i<=n;i++)
+    for(int i=0;i<n;i++)
         visited[i] = false;
 
     Queue q;
