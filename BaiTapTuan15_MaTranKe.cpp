@@ -82,3 +82,26 @@ void BFS(int start)
         }
     }
 }
+int main()
+{
+    ThemCanh(0,1);
+    ThemCanh(1,2);
+    ThemCanh(2,3);
+    ThemCanh(3,0);
+    ThemCanh(4,0);
+    ThemCanh(5,0);
+    ThemCanh(6,0);
+    ThemCanh(0,7);
+    ThemCanh(7,8);
+    ThemCanh(8,9);
+    ThemCanh(7,9);
+    ThemCanh(9,10);
+    ThemCanh(1,10);
+
+    cout << "BFS bat dau tu Ha Noi:\n\n";
+
+    BFS(0);
+
+    return 0;
+}
+
