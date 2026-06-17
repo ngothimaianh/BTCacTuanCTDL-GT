@@ -22,3 +22,34 @@ struct Node
     int info;
     Node* next;
 };
+Node* adj[MAX];
+
+void KhoiTao()
+{
+    for(int i=0;i<n;i++)
+        adj[i] = NULL;
+}
+
+Node* TaoNode(int x)
+{
+    Node* p = new Node;
+
+    p->info = x;
+    p->next = NULL;
+
+    return p;
+    }
+
+void ThemDau(Node* &head,int x)
+{
+    Node* p = TaoNode(x)
+
+    p->next = head;
+    head = p;
+}
+
+void ThemCanh(int u,int v)
+{
+    ThemDau(adj[u],v);
+    ThemDau(adj[v],u);
+}
