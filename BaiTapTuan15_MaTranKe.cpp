@@ -49,3 +49,36 @@ int Dequeue(Queue &q)
     q.dau++;
     return x;
 }
+void ThemCanh(int u, int v)
+{
+    a[u][v] = 1;
+    a[v][u] = 1;
+}
+void BFS(int start)
+{
+    bool visited[MAX];
+
+    for(int i=0;i<=n;i++)
+        visited[i] = false;
+
+    Queue q;
+    KhoiTaoQueue(q);
+
+    visited[start] = true;
+    Enqueue(q,start);
+
+    while(!Rong(q))
+    {
+        int u = Dequeue(q);
+
+        cout << TenTinh[u] << endl;
+
+        for(int v=0;v<n;v++) {
+            if(a[u][v] == 1 && visited[v] == false)
+            {
+                visited[v] = true;
+                Enqueue(q,v);
+            }
+        }
+    }
+}
