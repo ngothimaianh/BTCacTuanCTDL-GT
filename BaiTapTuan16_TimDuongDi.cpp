@@ -68,3 +68,104 @@ ThemCanh(0,1);   // Ha Noi - Hai Duong
 
     return false;
 }
+void BFS(int s, int t)
+{
+    bool visited[MAX];
+    int parent[MAX];
+
+    for(int i = 0; i < MAX; i++)
+    {
+        visited[i] = false;
+        parent[i] = -1;
+    }
+
+    queue<int> q;
+
+    visited[s] = true;
+    q.push(s);
+
+    while(!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+
+        if(u == t)
+          break;
+
+        for(int v = 0; v < MAX; v++)
+        {
+            if(A[u][v] == 1 && !visited[v])
+            {
+                visited[v] = true;
+                parent[v] = u;
+                q.push(v);
+            }
+        }
+    }
+
+    if(!visited[t])
+    {
+        cout << "\nKhong ton tai duong di!\n";
+        return;
+    }
+    int path[MAX];
+    int cnt = 0;
+
+    int cur = t;
+
+    while(cur != -1)
+    {
+        path[cnt++] = cur;
+        cur = parent[cur];
+    }
+
+    cout << "\nDuong di ngan nhat:\n";
+
+    for(int i = cnt - 1; i >= 0; i--)
+    {
+        cout << TenTinh[path[i]];
+
+        if(i > 0)
+            cout << " -> ";
+    }
+
+    cout << "\nSo canh di qua: " << cnt - 1 << endl;
+}
+void InDanhSachTinh()
+{
+    cout << "\nDANH SACH CAC TINH\n\n";
+
+    for(int i = 0; i < MAX; i++)
+    {
+        cout << i << ". " << TenTinh[i] << endl;
+    }
+}
+int main()
+{
+    KhoiTaoDoThi();
+
+    InDanhSachTinh();
+
+    int start, finish;
+
+    cout << "\nNhap dinh bat dau: ";
+    cin >> start;
+
+    cout << "Nhap dinh ket thuc: ";
+    cin >> finish;
+
+    for(int i = 0; i < MAX; i++)
+    {
+        visited[i] = false;
+    }
+cout << "\nKiem tra duong di tu " << TenTinh[start] << " den " << TenTinh[finish] << ":\n";
+
+    if(DFS(start, finish))
+        cout << "Ton tai duong di!\n";
+    else
+        cout << "Khong ton tai duong di!\n";
+
+    BFS(start, finish);
+
+    return 0;
+}
