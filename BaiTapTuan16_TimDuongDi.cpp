@@ -19,6 +19,11 @@ string TenTinh[MAX] =
 };
 int A[MAX][MAX];
 bool visited[MAX];
+void ThemCanh(int u, int v)
+{
+    A[u][v] = 1;
+    A[v][u] = 1;
+}
 void KhoiTaoDoThi()
 {
     for(int i = 0; i < MAX; i++)
@@ -28,17 +33,12 @@ void KhoiTaoDoThi()
             A[i][j] = 0;
         }
     }
-    auto ThemCanh = [&](int u, int v)
-    {
-        A[u][v] = 1;
-        A[v][u] = 1;
-    };
 ThemCanh(0,1);   // Ha Noi - Hai Duong
     ThemCanh(1,2);   // Hai Duong - Hung Yen
     ThemCanh(2,3);   // Hung Yen - Phu Ly
     ThemCanh(3,0);   // Phu Ly - Ha Noi
 
-    ThemCanh(0,4)   // Hoa Binh
+    ThemCanh(0,4);   // Hoa Binh
     ThemCanh(0,5);   // Son Tay
     ThemCanh(0,6);   // Thai Nguyen
 
@@ -49,7 +49,8 @@ ThemCanh(0,1);   // Ha Noi - Hai Duong
     ThemCanh(7,9);   // Bac Ninh - Uong Bi
     ThemCanh(9,10);  // Uong Bi - Hai Phong
 
-    ThemCanh(1,10)
+    ThemCanh(1,10); 
+ } // Hai Duong - Hai Phong
     bool DFS(int u, int t)
 {
     visited[u] = true;
@@ -59,7 +60,7 @@ ThemCanh(0,1);   // Ha Noi - Hai Duong
 
     for(int v = 0; v < MAX; v++)
     {
-        if(A[u][v] == 1 & !visited[v])
+        if(A[u][v] == 1 && !visited[v])
         {
             if(DFS(v, t))
                 return true;
@@ -161,7 +162,7 @@ int main()
 cout << "\nKiem tra duong di tu " << TenTinh[start] << " den " << TenTinh[finish] << ":\n";
 
     if(DFS(start, finish))
-        cout << "Ton tai duong di!\n";
+        cout << "Ton tai duong di\n";
     else
         cout << "Khong ton tai duong di!\n";
 
