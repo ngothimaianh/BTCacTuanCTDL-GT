@@ -147,13 +147,7 @@ int main()
 
     InDanhSachTinh();
 
-    int start, finish;
-
-    cout << "\nNhap dinh bat dau: ";
-    cin >> start;
-
-    cout << "Nhap dinh ket thuc: ";
-    cin >> finish;
+    int start = 0, finish = 10;
 
     for(int i = 0; i < MAX; i++)
     {
