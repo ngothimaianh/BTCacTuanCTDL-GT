@@ -47,3 +47,84 @@ void InTenDinh()
     for(int i=0;i<MAX;i++)
         cout << i << " : " << TenTinh[i] << endl;
 }
+void InMaTran()
+{
+    cout << "\nMa tran ke\n\n";
+
+    for(int i=0;i<MAX;i++)
+    {
+        for(int j=0;j<MAX;j++)
+            cout << setw(3) << a[i][j];
+        cout << endl;
+    }
+}
+void Dijkstra(int s, int t)
+{
+    int d[MAX];
+    int truoc[MAX];
+    bool visited[MAX];
+
+    for(int i = 0; i < MAX; i++)
+    {
+        d[i] = INF;
+        truoc[i] = -1;
+        visited[i] = false;
+    }
+
+    d[s] = 0;
+
+    for(int i = 0; i < MAX; i++)
+    {
+        int u = -1;
+        int Min = INF;
+         for(int j = 0; j < MAX; j++)
+        {
+            if(!visited[j] && d[j] < Min)
+            {
+                Min = d[j];
+                u = j;
+            }
+        }
+
+        if(u == -1)
+            break;
+
+        visited[u] = true;
+         for(int v = 0; v < MAX; v++)
+        {
+            if(a[u][v] != 0 && !visited[v])
+            {
+                if(d[v] >= d[u] + a[u][v])
+                {
+                    d[v] = d[u] + a[u][v];
+                    truoc[v] = u;
+                }
+            }
+        }
+    }
+
+    if(d[t] == INF)
+    {
+        cout << "\nKhong co duong di!\n";
+        return;
+    }
+  int path[MAX];
+    int dem = 0
+    int x = t;
+
+    while(x != -1)
+    {
+        path[dem++] = x;
+        x = truoc[x];
+    }
+
+    cout << "\nDuong di ngan nhat:\n";
+
+    for(int i = dem - 1; i >= 0; i--)
+    {
+        cout << path[i] << "(" << TenTinh[path[i]] << ")";
+        if(i != 0)
+            cout << " -> ";
+    }
+   cout << "\nTong trong so: " << d[t] << endl;
+}
