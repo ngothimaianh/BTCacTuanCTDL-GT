@@ -128,3 +128,72 @@ void Dijkstra(int s, int t)
     }
    cout << "\nTong trong so: " << d[t] << endl;
 }
+void Prim(int start)
+{
+    bool visited[MAX];
+    int T[MAX][MAX];
+    int tong = 0;
+
+    for(int i = 0; i < MAX; i++)
+    {
+        visited[i] = false;
+        for(int j = 0; j < MAX; j++)
+            T[i][j] = 0;
+    }
+
+    visited[start] = true;
+
+    cout << "\nCac canh cua cay khung Prim:\n";
+
+    for(int k = 0; k < MAX - 1; k++)
+    {
+        int Min = INF;
+         int u = -1;
+        int v = -1;
+
+        for(int i = 0; i < MAX; i++)
+        {
+            if(visited[i])
+            {
+                for(int j = 0; j < MAX; j++)
+                {
+                    if(!visited[j] && a[i][j] != 0)
+                    {
+                        if(a[i][j] < Min)
+                        {
+                            Min = a[i][j];
+                            u = i;
+                            v = j;
+                        }
+                                            }
+                }
+            }
+        }
+
+        if(u == -1)
+            break;
+
+        visited[v] = true;
+        T[u][v] = a[u][v];
+        T[v][u] = a[v][u];
+        tong += a[u][v];
+
+        cout << TenTinh[u]
+             << " - "
+             << TenTinh[v]
+             << " : "
+             << a[u][v]
+             << endl;
+    }
+
+    cout << "\nTong trong so cay khung = " << tong << endl;
+
+    cout << "\nMa tran ke cua cay khung Prim\n\n";
+
+    for(int i = 0; i < MAX; i++)
+    {
+        for(int j = 0; j < MAX; j++)
+            cout << setw(3) << T[i][j];
+        cout << endl;
+    }
+}
