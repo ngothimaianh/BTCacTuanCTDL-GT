@@ -1,0 +1,22 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+const int MAX = 11;
+const int INF = 1000000;
+
+string TenTinh[MAX] =
+{
+    "Ha Noi",
+    "Thai Nguyen",
+    "Bac Ninh",
+    "Bac Giang",
+    "Uong Bi",
+    "Hai Phong",
+    "Hai Duong",
+    "Hung Yen",
+    "Phu Ly",
+    "Hoa Binh",
+    "Son Tay"
+};
+int a[MAX][MAX];
