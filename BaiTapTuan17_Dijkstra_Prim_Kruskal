@@ -20,3 +20,30 @@ string TenTinh[MAX] =
     "Son Tay"
 };
 int a[MAX][MAX];
+void TaoDoThi()
+{
+    for(int i=0;i<MAX;i++)
+        for(int j=0;j<MAX;j++)
+            a[i][j]=0;
+
+    a[0][6]=a[6][0]=1;     // D1
+    a[6][7]=a[7][6]=2;     // D2
+    a[7][8]=a[8][7]=3;     // D3
+    a[8][0]=a[0][8]=4;     // D4
+    a[0][9]=a[9][0]=5;     // D5
+    a[0][10]=a[10][0]=6;   // D6
+    a[0][1]=a[1][0]=7;     // D7
+    a[0][2]=a[2][0]=8;     // D8
+    a[2][3]=a[3][2]=9;     // D9
+    a[3][4]=a[4][3]=10;    // D10
+    a[2][4]=a[4][2]=11;    // D11
+    a[4][5]=a[5][4]=12;    // D12
+    a[6][5]=a[5][6]=13;    // D13
+}
+void InTenDinh()
+{
+    cout << "\nDanh sach cac dinh\n";
+
+    for(int i=0;i<MAX;i++)
+        cout << i << " : " << TenTinh[i] << endl;
+}
