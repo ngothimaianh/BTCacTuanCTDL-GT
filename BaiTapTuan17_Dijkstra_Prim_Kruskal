@@ -197,3 +197,110 @@ void Prim(int start)
         cout << endl;
     }
 }
+struct Edge
+{
+    int u;
+    int v;
+    int w;
+};
+
+Edge E[13]=
+{
+    {0,6,1},
+    {6,7,2},
+    {7,8,3},
+    {8,0,4},
+    {0,9,5},
+    {0,10,6},
+    {0,1,7},
+    {0,2,8},
+    {2,3,9},
+    {3,4,10},
+    {2,4,11},
+    {4,5,12},
+    {6,5,13}
+};
+int parent[MAX];
+
+int Find(int x)
+{
+    if(parent[x]==x)
+        return x;
+    return Find(parent[x]);
+}
+
+void Union(int x,int y)
+{
+    parent[Find(x)] = Find(y);
+}
+
+void Kruskal()
+{
+    for(int i=0;i<MAX;i++)
+        parent[i]=i;
+
+    int T[MAX][MAX];
+    int tong=0;
+        for(int i=0;i<MAX;i++)
+        for(int j=0;j<MAX;j++)
+            T[i][j]=0;
+
+    cout<<"\nCac canh cua cay khung Kruskal:\n";
+
+    int dem=0;
+
+    for(int i=0;i<13 && dem<MAX-1;i++)
+    {
+        int u=E[i].u;
+        int v=E[i].v;
+
+        if(Find(u)!=Find(v))
+        {
+            Union(u,v);
+
+            T[u][v]=E[i].w;
+            T[v][u]=E[i].w;
+
+            tong+=E[i].w;
+            dem++;
+            cout<<TenTinh[u]
+                <<" - "
+                <<TenTinh[v]
+                <<" : "
+                <<E[i].w<<endl;
+        }
+    }
+
+    cout<<"\nTong trong so cay khung = "<<tong<<endl;
+
+    cout<<"\nMa tran ke cua cay khung Kruskal\n\n";
+
+    for(int i=0;i<MAX;i++)
+    {
+        for(int j=0;j<MAX;j++)
+            cout<<setw(3)<<T[i][j];
+        cout<<endl;
+    }
+}
+int main()
+{
+    TaoDoThi();
+
+    int s = 0, t = 9;
+    cout << "\nDANH SACH DINH\n";
+    InTenDinh();
+
+    cout << "\nMA TRAN KE\n";
+    InMaTran();
+
+    cout << "\nDIJKSTRA\n";
+    Dijkstra(s, t);
+
+    cout << "\nPRIM\n";
+    Prim(s);
+
+    cout << "\nKRUSKAL\n";
+    Kruskal();
+
+    return 0;
+}
