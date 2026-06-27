@@ -109,7 +109,7 @@ void Dijkstra(int s, int t)
         return;
     }
   int path[MAX];
-    int dem = 0
+    int dem = 0;
     int x = t;
 
     while(x != -1)
@@ -120,7 +120,7 @@ void Dijkstra(int s, int t)
 
     cout << "\nDuong di ngan nhat:\n";
 
-    for(int i = dem - 1; i >= 0; i--)
+    for(int i = dem - 1; i > 0; i--)
     {
         cout << path[i] << "(" << TenTinh[path[i]] << ")";
         if(i != 0)
@@ -222,16 +222,16 @@ Edge E[13]=
 };
 int parent[MAX];
 
-int Find(int x)
+int TimGoc(int x)
 {
     if(parent[x]==x)
         return x;
-    return Find(parent[x]);
+    return TimGoc(parent[x]);
 }
 
-void Union(int x,int y)
+void GopCay(int x,int y)
 {
-    parent[Find(x)] = Find(y);
+    parent[TimGoc(x)] = TimGoc(y);
 }
 
 void Kruskal()
@@ -254,9 +254,9 @@ void Kruskal()
         int u=E[i].u;
         int v=E[i].v;
 
-        if(Find(u)!=Find(v))
+        if(TimGoc(u)!=TimGoc(v))
         {
-            Union(u,v);
+            GopCay(u,v);
 
             T[u][v]=E[i].w;
             T[v][u]=E[i].w;
